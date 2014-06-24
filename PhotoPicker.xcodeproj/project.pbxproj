@@ -38,7 +38,6 @@
 		284EAAB917467372002CEFCB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		284EAABB17467372002CEFCB /* APLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APLViewController.h; sourceTree = "<group>"; };
 		284EAABC17467372002CEFCB /* APLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APLViewController.m; sourceTree = "<group>"; };
-		28A709B8174C02C5003E42E3 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		28DED20C1748C1CD00C382D5 /* OverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +58,6 @@
 		284EAA9417467372002CEFCB = {
 			isa = PBXGroup;
 			children = (
-				28A709B8174C02C5003E42E3 /* ReadMe.txt */,
 				284EAAA617467372002CEFCB /* PhotoPicker */,
 				284EAA9F17467372002CEFCB /* Frameworks */,
 				284EAA9E17467372002CEFCB /* Products */,

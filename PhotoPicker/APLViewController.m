@@ -80,7 +80,7 @@
 
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        // There is not a camera on this device, so don't show the camera button.
+        // 如果设备不支持相机，所以不显示拍照按钮
         NSMutableArray *toolbarItems = [self.toolBar.items mutableCopy];
         [toolbarItems removeObjectAtIndex:2];
         [self.toolBar setItems:toolbarItems animated:NO];
@@ -119,14 +119,11 @@
     
     if (sourceType == UIImagePickerControllerSourceTypeCamera)
     {
-        /*
-         The user wants to use the camera interface. Set up our custom overlay view for the camera.
-         */
+
+        // 如果用户想自定义相机界面，需要为相机设置overlay view
         imagePickerController.showsCameraControls = NO;
 
-        /*
-         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
-         */
+        // 载入OverlayView的nib文件。Self是nib文件的file owner，所以overlayView outlet被设置为nib的主视图。将主视图赋值给image picker controller的overlay view，然后将自身的overlayview设置为nil
         [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
         self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
         imagePickerController.cameraOverlayView = self.overlayView;
@@ -142,7 +139,7 @@
 
 - (IBAction)done:(id)sender
 {
-    // Dismiss the camera.
+    // 退出相机
     if ([self.cameraTimer isValid])
     {
         [self.cameraTimer invalidate];
@@ -159,7 +156,7 @@
 
 - (IBAction)delayedTakePhoto:(id)sender
 {
-    // These controls can't be used until the photo has been taken
+    // 直到拍照之后这些控件按钮才可以使用
     self.doneButton.enabled = NO;
     self.takePictureButton.enabled = NO;
     self.delayedPhotoButton.enabled = NO;
@@ -176,12 +173,11 @@
 - (IBAction)startTakingPicturesAtIntervals:(id)sender
 {
     /*
-     Start the timer to take a photo every 1.5 seconds.
-     
-     CAUTION: for the purpose of this sample, we will continue to take pictures indefinitely.
-     Be aware we will run out of memory quickly.  You must decide the proper threshold number of photos allowed to take from the camera.
-     One solution to avoid memory constraints is to save each taken photo to disk rather than keeping all of them in memory.
-     In low memory situations sometimes our "didReceiveMemoryWarning" method will be called in which case we can recover some memory and keep the app running.
+     采用定时器每1.5s进行一次拍照
+     注意：为了演示目的，我们会一直不停的拍照下去。
+          我们将很快耗尽内存。你必须决定拍照所允许的阈值数。
+          其中一个解决方案是将照片存储在磁盘上而不是一直存储在内存中。
+          在内存不足的情况下，有时候"didReceiveMemoryWarning"会被调用，我们可以恢复一些内存来保持应用程序继续运行。
      */
     self.startStopButton.title = NSLocalizedString(@"Stop", @"Title for overlay view controller start/stop button");
     [self.startStopButton setAction:@selector(stopTakingPicturesAtIntervals:)];
@@ -197,7 +193,7 @@
 
 - (IBAction)stopTakingPicturesAtIntervals:(id)sender
 {
-    // Stop and reset the timer.
+    // 停止并重置计时器
     [self.cameraTimer invalidate];
     self.cameraTimer = nil;
 
@@ -213,19 +209,21 @@
     {
         if ([self.capturedImages count] == 1)
         {
-            // Camera took a single picture.
+            // 相机拍了一张照片
             [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
         }
         else
         {
-            // Camera took multiple pictures; use the list of images for animation.
+            // 相机拍了多张照片；采用图片序列动画
             self.imageView.animationImages = self.capturedImages;
-            self.imageView.animationDuration = 5.0;    // Show each captured photo for 5 seconds.
-            self.imageView.animationRepeatCount = 0;   // Animate forever (show all photos).
+            // 每张照片显示5s
+            self.imageView.animationDuration = 5.0;
+            // 永久播放（显示所有照片）
+            self.imageView.animationRepeatCount = 0;
             [self.imageView startAnimating];
         }
         
-        // To be ready to start again, clear the captured images array.
+        // 为了重新开始，清除capturedImages数组
         [self.capturedImages removeAllObjects];
     }
 
@@ -235,7 +233,7 @@
 
 #pragma mark - Timer
 
-// Called by the timer to take a picture.
+// 通过计时器调用进行拍照
 - (void)timedPhotoFire:(NSTimer *)timer
 {
     [self.imagePickerController takePicture];
@@ -244,7 +242,7 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 
-// This method is called when an image has been chosen from the library or taken from the camera.
+// 当从相册里选择一张照片或者用相机进行拍摄之后，该方法被调用
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
