@@ -230,6 +230,27 @@
     self.imagePickerController = nil;
 }
 
+- (void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo
+{
+    UIAlertView *alert;
+    
+    if (error)
+    {
+        alert = [[UIAlertView alloc] initWithTitle:@"错误"
+                                           message:@"保存失败"
+                                          delegate:self cancelButtonTitle:@"确定"
+                                 otherButtonTitles:nil];
+    }
+    else
+    {
+        alert = [[UIAlertView alloc] initWithTitle:@"成功"
+                                           message:@"保存成功"
+                                          delegate:self cancelButtonTitle:@"确定"
+                                 otherButtonTitles:nil];
+    }
+    [alert show];
+}
+
 
 #pragma mark - Timer
 
@@ -246,13 +267,20 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-
+    NSLog(@"SMILE!");
     [self.capturedImages addObject:image];
 
     if ([self.cameraTimer isValid])
     {
         return;
     }
+    
+    if (self.imagePickerController.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+    
 
     [self finishAndUpdate];
 }

@@ -34,7 +34,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="668506845">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIToolbar" id="249500637">
@@ -42,6 +42,7 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{0, 524}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="668506845"/>
+						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -80,6 +81,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 568}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="249500637"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
@@ -341,7 +344,104 @@
 			<nil key="sourceID"/>
 			<int key="maxID">42</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">APLViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="delayedTakePhoto:">id</string>
+						<string key="done:">id</string>
+						<string key="showImagePickerForCamera:">id</string>
+						<string key="showImagePickerForPhotoPicker:">id</string>
+						<string key="startTakingPicturesAtIntervals:">id</string>
+						<string key="stopTakingPicturesAtIntervals:">id</string>
+						<string key="takePhoto:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="delayedTakePhoto:">
+							<string key="name">delayedTakePhoto:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="done:">
+							<string key="name">done:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showImagePickerForCamera:">
+							<string key="name">showImagePickerForCamera:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showImagePickerForPhotoPicker:">
+							<string key="name">showImagePickerForPhotoPicker:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="startTakingPicturesAtIntervals:">
+							<string key="name">startTakingPicturesAtIntervals:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="stopTakingPicturesAtIntervals:">
+							<string key="name">stopTakingPicturesAtIntervals:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="takePhoto:">
+							<string key="name">takePhoto:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="delayedPhotoButton">UIBarButtonItem</string>
+						<string key="doneButton">UIBarButtonItem</string>
+						<string key="imageView">UIImageView</string>
+						<string key="overlayView">UIView</string>
+						<string key="startStopButton">UIBarButtonItem</string>
+						<string key="takePictureButton">UIBarButtonItem</string>
+						<string key="toolBar">UIToolbar</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="delayedPhotoButton">
+							<string key="name">delayedPhotoButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="doneButton">
+							<string key="name">doneButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imageView">
+							<string key="name">imageView</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="overlayView">
+							<string key="name">overlayView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="startStopButton">
+							<string key="name">startStopButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="takePictureButton">
+							<string key="name">takePictureButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="toolBar">
+							<string key="name">toolBar</string>
+							<string key="candidateClassName">UIToolbar</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/APLViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSLayoutConstraint</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.previouslyAttemptedUpgradeToXcode5">YES</bool>
